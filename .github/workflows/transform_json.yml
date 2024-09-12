@@ -11,6 +11,9 @@ on:
 jobs:
   transform_json:
     runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      contents: write
     
     steps:
     - name: Checkout repository
@@ -31,8 +34,8 @@ jobs:
 
     - name: Commit and push changes to html branch
       run: |
-        git config --local user.name "GitHub Actions"
-        git config --local user.email "actions@github.com"
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
         git checkout -b html || git checkout html
         git add ./data/  # Assuming the transformed files are in the `data` folder
         git commit -m "Add transformed HTML files"
