@@ -1,0 +1,32 @@
+{
+"Provider": {
+    "UB Mannheim": {
+        "Bibliographic Info": {
+            "Title": "Wer leitet?",
+            "Collection(s)": "Hoppenstedt",
+            "Language": "German",
+            "Place of Publication": "Berlin",
+            "Structure Type": "Journal",
+            "OAI-Identifier": "516401084",
+            "URN": "urn:nbn:de:bsz:180-dighop-43",
+            "PURL": "http://digi.bib.uni-mannheim.de/urn/urn:nbn:de:bsz:180-dighop-43",
+            "Format": "METS"
+        },
+        "List of Volumes": {"Overview" :
+        [
+            {
+                "Volume": "01.1940",
+                "Year": "1940",
+                "URL": "https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=3793&tx_dlf%5Bpage%5D=1&tx_dlf%5Bdouble%5D=0&cHash=db9a2c0fff501ba49bbf08eb1e9db306",
+                "METS": "https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-31"
+            },
+            {
+                "Volume": "02.1941/42",
+                "Year": "1941/42",
+                "URL": "https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=3796&tx_dlf%5Bpage%5D=1&tx_dlf%5Bdouble%5D=0&cHash=234657d30a09683002f8608b0fd98e68",
+                "METS": "https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-31"
+            }
+        ]}
+    }
+}}
+

@@ -1,0 +1,36 @@
+name: Transform JSON Files
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  transform_json:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Specify the Python version you are using
+    
+    - name: Install dependencies
+      run: |
+        pip install beautifulsoup4
+
+    - name: Run JSON to HTML transformation script
+      run: |
+        python code/render_json_to_html.py  ./data/ # Update with your actual script path
+    
+    - name: Upload all generated HTML files
+      uses: actions/upload-artifact@v2
+      with:
+        name: rendered-html
+        path: '**/data.html'  # Use wildcard to upload all `data.html` files from `data` and subfolders
