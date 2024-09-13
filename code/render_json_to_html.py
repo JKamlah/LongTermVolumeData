@@ -52,13 +52,14 @@ def load_and_accumulate_json_files(folder):
 
 def render_provider(provider_name, provider_data, provider_id):
     # Create an accordion for each provider
-    html_content = f'<div class="accordion-item">'
+    html_content = '<h4><span class ="title"> Volumes</span></h4>'
+    html_content += f'<div class="accordion-item">'
     html_content += f'<h2 class="accordion-header" id="heading-{provider_id}">'
-    html_content += f'<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{provider_id}" aria-expanded="true" aria-controls="collapse-{provider_id}">'
+    html_content += f'<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{provider_id}" aria-expanded="true" aria-controls="collapse-{provider_id}">'
     html_content += f'{provider_name}'
     html_content += '</button></h2>'
 
-    html_content += f'<div id="collapse-{provider_id}" class="accordion-collapse collapse show" aria-labelledby="heading-{provider_id}" data-bs-parent="#heading-{provider_id}">'
+    html_content += f'<div id="collapse-{provider_id}" class="accordion-collapse collapse" aria-labelledby="heading-{provider_id}" data-bs-parent="#heading-{provider_id}">'
     html_content += '<div class="accordion-body">'
 
     # Render the first level Bibliographic Info and List of Volumes
@@ -111,7 +112,7 @@ def render_list_of_volumes(provider_data, parent_id):
             html_content += f'<div id="collapse-volumes-{parent_id}" class="accordion-collapse collapse">'
             html_content += '<div class="accordion-body"><ul>'
             for volume in provider_data["List of Volumes"][title]:
-                html_content += f'<li><strong>{volume["Volume"]} ({volume["Year"]}):</strong> <a href="{volume["URL"]}">View Source</a> | <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D={volume["METS"]}">Open with OCR-Viewer</a> | <a href="{volume["METS"]}">View METS</a></li>'
+                html_content += f'<li><strong>{volume["Volume"]} ({volume["Year"]}):</strong> <a href="{volume["URL"]}">View Source</a>  |  <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D={volume["METS"]}">Open with OCR-Viewer</a>  |  <a href="{volume["METS"]}">View METS</a></li>'
             html_content += '</ul></div></div></div>'
         return html_content
     return ''
@@ -121,8 +122,147 @@ def process_and_render_html(data):
     # Start HTML with Bootstrap CSS and JS includes
     html_content = '''<html>
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        /* Variables */
+        :root {
+  /* Color theme variables */
+  --primary: #36864f;
+  --primary-dark: #1c6c35;
+  --primary-light: #e3e3e3;
+
+  /* Accordion variables */
+  --bs-accordion-border-color: var(--primary-light);
+  --bs-accordion-border-width: 1px;
+  --bs-accordion-border-radius: 0.25rem;
+  --bs-accordion-inner-border-radius: calc(0.25rem - 1px);
+  --bs-accordion-btn-padding-x: 1.25rem;
+  --bs-accordion-btn-padding-y: 1rem;
+  --bs-accordion-btn-color: #212529; /* Button text color */
+  --bs-accordion-btn-bg: var(--primary-light); /* Button background color */
+  --bs-accordion-btn-icon-color: #212529; /* Icon color */
+  --bs-accordion-btn-active-color: #fff; /* Text color when active */
+  --bs-accordion-btn-active-bg: var(--primary); /* Background when active */
+  --bs-accordion-btn-focus-border-color: var(--primary-dark); /* Focus border color */
+  --bs-accordion-body-padding-x: 1.25rem;
+  --bs-accordion-body-padding-y: 1rem;
+  --bs-accordion-body-color: #212529;
+  --bs-accordion-body-bg: #fff;
+
+  /* Collapse variables */
+  --bs-collapse-transition-duration: 0.35s;
+}
+        
+        /* Accordion Styles */
+        .accordion {
+          --bs-accordion-border-color: var(--bs-accordion-border-color);
+        }
+        
+        .accordion-item {
+          background-color: var(--bs-accordion-body-bg);
+          border: var(--bs-accordion-border-width) solid var(--bs-accordion-border-color);
+          border-radius: var(--bs-accordion-border-radius);
+          margin-bottom: 0.5rem;
+        }
+        
+        .accordion-item:last-of-type {
+          margin-bottom: 0;
+        }
+        
+        .accordion-header {
+          margin-bottom: 0;
+        }
+        
+        .accordion-button {
+          position: relative;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+          color: var(--bs-accordion-btn-color);
+          text-align: left;
+          background-color: var(--bs-accordion-btn-bg);
+          border: 0;
+          border-radius: var(--bs-accordion-inner-border-radius);
+          overflow-anchor: none;
+          transition: background-color 0.15s ease-in-out;
+        }
+        
+        .accordion-button:not(.collapsed) {
+          color: var(--bs-accordion-btn-active-color);
+          background-color: var(--bs-accordion-btn-active-bg);
+          box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+        }
+        
+        .accordion-button:focus {
+          z-index: 3;
+          border-color: var(--bs-accordion-btn-focus-border-color);
+          outline: 0;
+          box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+        
+        .accordion-button::after {
+          flex-shrink: 0;
+          width: 1.25rem;
+          height: 1.25rem;
+          margin-left: auto;
+          content: "";
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23212529' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.5 6a.5.5 0 0 1 .5-.5h12a.5.5 0 0 1 .354.854l-6 6a.5.5 0 0 1-.708 0l-6-6A.5.5 0 0 1 1.5 6z'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-size: 1.25rem;
+          transition: transform 0.2s ease-in-out;
+        }
+        
+        .accordion-button:not(.collapsed)::after {
+          transform: rotate(180deg);
+        }
+        
+        .accordion-button:focus:not(.collapsed) {
+          box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+        }
+        
+        .accordion-collapse {
+          border-top: var(--bs-accordion-border-width) solid var(--bs-accordion-border-color);
+        }
+        
+        .accordion-body {
+          padding: var(--bs-accordion-body-padding-y) var(--bs-accordion-body-padding-x);
+          color: var(--bs-accordion-body-color);
+          background-color: var(--bs-accordion-body-bg);
+        }
+        
+        /* Collapse Styles */
+        .collapse {
+          display: none;
+        }
+        
+        .collapse.show {
+          display: block;
+        }
+        
+        .collapsing {
+          height: 0;
+          overflow: hidden;
+          transition: height var(--bs-collapse-transition-duration) ease;
+        }
+        
+        .collapsing.collapse-horizontal {
+          width: 0;
+          height: auto;
+          transition: width var(--bs-collapse-transition-duration) ease;
+        }
+        
+        .collapse-horizontal {
+          width: 0;
+          height: auto;
+          overflow: hidden;
+        }
+        
+        .collapse.show.collapse-horizontal {
+          width: auto;
+        }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
     <div class="accordion" id="accordionProviders">'''

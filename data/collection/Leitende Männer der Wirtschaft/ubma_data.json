@@ -1,0 +1,88 @@
+{
+    "Provider": {
+        "UB Mannheim": {
+            "Bibliographic Info": {
+                "DFG-Viewer": "1046983326",
+                "Title": "Leitende Männer der Wirtschaft",
+                "Collection(s)": "Hoppenstedt",
+                "Language": "Deutsch",
+                "Place of Publication": "Berlin",
+                "Structure Type": "Darmstadt",
+                "OAI-Identifier": "Essen",
+                "URN": "Zeitschrift",
+                "PURL": "1046983326",
+                "METS": "urn:nbn:de:bsz:180-dighop-75"
+            },
+            "List of Volumes": {
+                "Overview": [
+                    {
+                        "Volume": "06.1957/58",
+                        "Year": "1957/58",
+                        "URL": "https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=3810&tx_dlf%5Bpage%5D=1&tx_dlf%5Bdouble%5D=0&cHash=268807fe5e8cf5c43e40cac76eb7ad93",
+                        "METS": "https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-61"
+                    },
+                    {
+                        "Volume": "07.1959",
+                        "Year": "1959",
+                        "URL": "https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=3818&tx_dlf%5Bpage%5D=1&tx_dlf%5Bdouble%5D=0&cHash=7e86cab17165a0324d1a1545bea6b392",
+                        "METS": "https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-89"
+                    },
+                    {
+                        "Volume": "08.1960",
+                        "Year": "1960",
+                        "URL": "https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=3819&tx_dlf%5Bpage%5D=1&tx_dlf%5Bdouble%5D=0&cHash=c3ed302d611db92ecad1a20b05eef067",
+                        "METS": "https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-98"
+                    },
+                    {
+                        "Volume": "12.1964",
+                        "Year": "1964",
+                        "URL": "https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=3854&tx_dlf%5Bpage%5D=1&tx_dlf%5Bdouble%5D=0&cHash=822edbf3064b1f7fcc44e8e618ce8c8d",
+                        "METS": "https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-108"
+                    },
+                    {
+                        "Volume": "13.1965",
+                        "Year": "1965",
+                        "URL": "https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=3855&tx_dlf%5Bpage%5D=1&tx_dlf%5Bdouble%5D=0&cHash=23af609c7c52b63eae809154af728dc0",
+                        "METS": "https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-114"
+                    },
+                    {
+                        "Volume": "14.1966",
+                        "Year": "1966",
+                        "URL": "https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=3871&tx_dlf%5Bpage%5D=1&tx_dlf%5Bdouble%5D=0&cHash=d3b62037f0c8ec670bbf1b8d3effffb0",
+                        "METS": "https://digi.bib.uni-mannheim.de/mets/Band"
+                    },
+                    {
+                        "Volume": "15.1967",
+                        "Year": "1967",
+                        "URL": "https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4082&tx_dlf%5Bpage%5D=1&tx_dlf%5Bdouble%5D=0&cHash=ecd897661cdbb2ad480df4af90e1b66d",
+                        "METS": "https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-250"
+                    },
+                    {
+                        "Volume": "16.1968",
+                        "Year": "1968",
+                        "URL": "https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4081&tx_dlf%5Bpage%5D=1&tx_dlf%5Bdouble%5D=0&cHash=89b4e2444f295573c7e611333ccce0df",
+                        "METS": "https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-244"
+                    },
+                    {
+                        "Volume": "17.1969",
+                        "Year": "1969",
+                        "URL": "https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=3903&tx_dlf%5Bpage%5D=1&tx_dlf%5Bdouble%5D=0&cHash=4b02b8af8775fed0fa70eff63b7eaba6",
+                        "METS": "https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-137"
+                    },
+                    {
+                        "Volume": "18.1970",
+                        "Year": "1970",
+                        "URL": "https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4080&tx_dlf%5Bpage%5D=1&tx_dlf%5Bdouble%5D=0&cHash=fa2e5d89cdec339b0ff6a66c440774a7",
+                        "METS": "https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-230"
+                    },
+                    {
+                        "Volume": "19.1971",
+                        "Year": "1971",
+                        "URL": "https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4090&tx_dlf%5Bpage%5D=1&tx_dlf%5Bdouble%5D=0&cHash=2d0a576023258f426ab2d9cf6715384d",
+                        "METS": "https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-263"
+                    }
+                ]
+            }
+        }
+    }
+}
