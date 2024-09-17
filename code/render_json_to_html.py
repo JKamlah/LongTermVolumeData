@@ -106,6 +106,11 @@ def render_list_of_volumes(provider_data, parent_id):
         html_content = '<div class="accordion-item">'
         html_content += '<h2 class="accordion-header">'
         for title in provider_data["List of Volumes"].keys():
+            html_content += f'<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-volumes-{parent_id}" aria-expanded="false" aria-controls="collapse-volumes">'
+            html_content += f'List of Volumes - {title}'
+            html_content += '</button></h2>'
+            html_content += f'<div id="collapse-volumes-{parent_id}" class="accordion-collapse collapse">'
+            html_content += '<div class="accordion-body"><ul>'
             for volume in provider_data["List of Volumes"][title]:
                 volume_number = volume.get("Volume", "NA")
                 year = volume.get("Year", "NA")
