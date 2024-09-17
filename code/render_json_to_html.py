@@ -273,6 +273,16 @@ def process_and_render_html(data):
           width: auto;
         }
   </style>
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      // Select the media-render element
+      var mediaRenderDiv = document.querySelector('.media-render.recore');
+      // Select the dl element
+      var dlElement = document.querySelector('dl');
+      // Insert the mediaRenderDiv after the dl element
+      dlElement.parentNode.insertBefore(mediaRenderDiv, dlElement.nextSibling);
+    });
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
