@@ -1,0 +1,365 @@
+{
+    "Provider": {
+        "Staatsbibliothek zu Berlin": {
+            "Bibliographic Info": {
+                "ZDB-Nummer (Digitalisat)": "2436020-X",
+                "Title": "Berliner Börsen-Zeitung",
+                "Untertitel": "Tageszeitung für Politik und Wirtschaft, für Wehrfragen, Kultur und Unterhaltung",
+                "Alternativer Titel": "Berliner Börsen-Zeitung / Morgenausgabe Berliner Börsen-Zeitung / Abendausgabe Berliner Börsen-Courier Die digitale Bibliothek / Berliner Börsen-Zeitung Tageszeitung für Politik und Wirtschaft, für Wehrfragen, Kultur und Unterhaltung Börsen-Kurier",
+                "Verlag": "Metzold Kühn",
+                "Erscheinungsverlauf": "1857, No. 167 (1. April 1857)-1857, No. 661 (31. December 1857) ; 1872, No. 4 (4. Januar 1872)-76. Jahrgang, Nummer 225 (17. Mai 1931) ; 1934, Nr. 544 (19. November 1934)-1936, Nr. 202 (30. April 1936) ; 1939, Nr. 330 (17. Juli 1939)-1939, Nr. 408 (31. August 1939)",
+                "Periodizität": "Morgen- u. Abendausg. in fortlaufender Nr.-Zählung; Jg.-Zählung wechselt jährlich zum 1. Juli; Periodizität: 2x tägl.",
+                "Projekt": "Zeitungsinformationssystem",
+                "Medientyp": "Text",
+                "Kategorie": "Zeitungen",
+                "Schlagwort": "Zeitung Regionalzeitung",
+                "Language": "ger",
+                "Identnummer (PPN digital)": "989489027",
+                "ZDB-Nummer (Original)": "1114705-2",
+                "Jahr der Digitalisierung": "2008",
+                "Erscheinungszeitraum (Ende)": "1939]",
+                "Erscheinungszeitraum (Anfang)": "[1857",
+                "Digitalisierungsvorlage": "digitized microfilm",
+                "Digitalisierer": "Staatsbibliothek",
+                "Standort": "Staatsbibliothek zu Berlin – Preußischer Kulturbesitz",
+                "Ort der Digitalisierung": "Berlin",
+                "Erscheinungsort": "Berlin Berlin",
+                "Persistente URL": "https://www.deutsche-digitale-bibliothek.de/newspaper/2436020-X http://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/"
+            },
+            "List of Volumes": {
+                "Overview": [
+                    {
+                        "Volume": "1857",
+                        "Year": "1857",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1857/"
+                    },
+                    {
+                        "Volume": "1872",
+                        "Year": "1872",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1872/"
+                    },
+                    {
+                        "Volume": "1873",
+                        "Year": "1873",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1873/"
+                    },
+                    {
+                        "Volume": "1874",
+                        "Year": "1874",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1874/"
+                    },
+                    {
+                        "Volume": "1875",
+                        "Year": "1875",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1875/"
+                    },
+                    {
+                        "Volume": "1876",
+                        "Year": "1876",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1876/"
+                    },
+                    {
+                        "Volume": "1877",
+                        "Year": "1877",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1877/"
+                    },
+                    {
+                        "Volume": "1878",
+                        "Year": "1878",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1878/"
+                    },
+                    {
+                        "Volume": "1879",
+                        "Year": "1879",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1879/"
+                    },
+                    {
+                        "Volume": "1880",
+                        "Year": "1880",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1880/"
+                    },
+                    {
+                        "Volume": "1881",
+                        "Year": "1881",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1881/"
+                    },
+                    {
+                        "Volume": "1882",
+                        "Year": "1882",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1882/"
+                    },
+                    {
+                        "Volume": "1883",
+                        "Year": "1883",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1883/"
+                    },
+                    {
+                        "Volume": "1884",
+                        "Year": "1884",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1884/"
+                    },
+                    {
+                        "Volume": "1885",
+                        "Year": "1885",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1885/"
+                    },
+                    {
+                        "Volume": "1886",
+                        "Year": "1886",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1886/"
+                    },
+                    {
+                        "Volume": "1887",
+                        "Year": "1887",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1887/"
+                    },
+                    {
+                        "Volume": "1888",
+                        "Year": "1888",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1888/"
+                    },
+                    {
+                        "Volume": "1889",
+                        "Year": "1889",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1889/"
+                    },
+                    {
+                        "Volume": "1890",
+                        "Year": "1890",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1890/"
+                    },
+                    {
+                        "Volume": "1891",
+                        "Year": "1891",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1891/"
+                    },
+                    {
+                        "Volume": "1892",
+                        "Year": "1892",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1892/"
+                    },
+                    {
+                        "Volume": "1893",
+                        "Year": "1893",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1893/"
+                    },
+                    {
+                        "Volume": "1894",
+                        "Year": "1894",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1894/"
+                    },
+                    {
+                        "Volume": "1895",
+                        "Year": "1895",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1895/"
+                    },
+                    {
+                        "Volume": "1896",
+                        "Year": "1896",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1896/"
+                    },
+                    {
+                        "Volume": "1897",
+                        "Year": "1897",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1897/"
+                    },
+                    {
+                        "Volume": "1898",
+                        "Year": "1898",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1898/"
+                    },
+                    {
+                        "Volume": "1899",
+                        "Year": "1899",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1899/"
+                    },
+                    {
+                        "Volume": "1900",
+                        "Year": "1900",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1900/"
+                    },
+                    {
+                        "Volume": "1901",
+                        "Year": "1901",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1901/"
+                    },
+                    {
+                        "Volume": "1902",
+                        "Year": "1902",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1902/"
+                    },
+                    {
+                        "Volume": "1903",
+                        "Year": "1903",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1903/"
+                    },
+                    {
+                        "Volume": "1904",
+                        "Year": "1904",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1904/"
+                    },
+                    {
+                        "Volume": "1905",
+                        "Year": "1905",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1905/"
+                    },
+                    {
+                        "Volume": "1906",
+                        "Year": "1906",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1906/"
+                    },
+                    {
+                        "Volume": "1907",
+                        "Year": "1907",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1907/"
+                    },
+                    {
+                        "Volume": "1908",
+                        "Year": "1908",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1908/"
+                    },
+                    {
+                        "Volume": "1909",
+                        "Year": "1909",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1909/"
+                    },
+                    {
+                        "Volume": "1910",
+                        "Year": "1910",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1910/"
+                    },
+                    {
+                        "Volume": "1911",
+                        "Year": "1911",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1911/"
+                    },
+                    {
+                        "Volume": "1912",
+                        "Year": "1912",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1912/"
+                    },
+                    {
+                        "Volume": "1913",
+                        "Year": "1913",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1913/"
+                    },
+                    {
+                        "Volume": "1914",
+                        "Year": "1914",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1914/"
+                    },
+                    {
+                        "Volume": "1915",
+                        "Year": "1915",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1915/"
+                    },
+                    {
+                        "Volume": "1916",
+                        "Year": "1916",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1916/"
+                    },
+                    {
+                        "Volume": "1917",
+                        "Year": "1917",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1917/"
+                    },
+                    {
+                        "Volume": "1918",
+                        "Year": "1918",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1918/"
+                    },
+                    {
+                        "Volume": "1919",
+                        "Year": "1919",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1919/"
+                    },
+                    {
+                        "Volume": "1920",
+                        "Year": "1920",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1920/"
+                    },
+                    {
+                        "Volume": "1921",
+                        "Year": "1921",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1921/"
+                    },
+                    {
+                        "Volume": "1922",
+                        "Year": "1922",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1922/"
+                    },
+                    {
+                        "Volume": "1923",
+                        "Year": "1923",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1923/"
+                    },
+                    {
+                        "Volume": "1924",
+                        "Year": "1924",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1924/"
+                    },
+                    {
+                        "Volume": "1925",
+                        "Year": "1925",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1925/"
+                    },
+                    {
+                        "Volume": "1926",
+                        "Year": "1926",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1926/"
+                    },
+                    {
+                        "Volume": "1927",
+                        "Year": "1927",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1927/"
+                    },
+                    {
+                        "Volume": "1928",
+                        "Year": "1928",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1928/"
+                    },
+                    {
+                        "Volume": "1929",
+                        "Year": "1929",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1929/"
+                    },
+                    {
+                        "Volume": "1930",
+                        "Year": "1930",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1930/"
+                    },
+                    {
+                        "Volume": "1931",
+                        "Year": "1931",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1931/"
+                    },
+                    {
+                        "Volume": "1934",
+                        "Year": "1934",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1934/"
+                    },
+                    {
+                        "Volume": "1935",
+                        "Year": "1935",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1935/"
+                    },
+                    {
+                        "Volume": "1936",
+                        "Year": "1936",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1936/"
+                    },
+                    {
+                        "Volume": "1939",
+                        "Year": "1939",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1939/"
+                    },
+                    {
+                        "Volume": "1942",
+                        "Year": "1942",
+                        "URL": "https://zefys.staatsbibliothek-berlin.de/list/title/zdb/2436020X/-/1942/"
+                    }
+                ]
+            }
+        }
+    }
+}
