@@ -1,0 +1,36 @@
+{
+    "Provider": {
+        "UB Mannheim": {
+            "Bibliographic Info": {
+                "Title": "Preußischer Staats-Anzeiger",
+                "Collection(s)": "Reichsanzeiger / Staatsanzeiger",
+                "Language": "Deutsch",
+                "OAI-Identifier": "historische Zeitungen"
+            },
+            "List of Volumes": {
+                "Overview": [
+                    {
+                        "Volume": "1848",
+                        "Year": "1848",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1848"
+                    },
+                    {
+                        "Volume": "1849",
+                        "Year": "1849",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1849"
+                    },
+                    {
+                        "Volume": "1850",
+                        "Year": "1850",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1850"
+                    },
+                    {
+                        "Volume": "1851",
+                        "Year": "1851",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1851"
+                    }
+                ]
+            }
+        }
+    }
+}

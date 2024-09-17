@@ -1,0 +1,257 @@
+{
+    "Provider": {
+        "UB Mannheim": {
+            "Bibliographic Info": {
+                "Title": "Deutscher Reichs-Anzeiger und Königlich Preußischer Staats-Anzeiger",
+                "Collection(s)": "Reichsanzeiger / Staatsanzeiger",
+                "Language": "Deutsch",
+                "OAI-Identifier": "historische Zeitungen"
+            },
+            "List of Volumes": {
+                "Overview": [
+                    {
+                        "Volume": "1871",
+                        "Year": "1871",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1871"
+                    },
+                    {
+                        "Volume": "1872",
+                        "Year": "1872",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1872"
+                    },
+                    {
+                        "Volume": "1873",
+                        "Year": "1873",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1873"
+                    },
+                    {
+                        "Volume": "1874",
+                        "Year": "1874",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1874"
+                    },
+                    {
+                        "Volume": "1875",
+                        "Year": "1875",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1875"
+                    },
+                    {
+                        "Volume": "1876",
+                        "Year": "1876",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1876"
+                    },
+                    {
+                        "Volume": "1877",
+                        "Year": "1877",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1877"
+                    },
+                    {
+                        "Volume": "1878",
+                        "Year": "1878",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1878"
+                    },
+                    {
+                        "Volume": "1879",
+                        "Year": "1879",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1879"
+                    },
+                    {
+                        "Volume": "1880",
+                        "Year": "1880",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1880"
+                    },
+                    {
+                        "Volume": "1881",
+                        "Year": "1881",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1881"
+                    },
+                    {
+                        "Volume": "1882",
+                        "Year": "1882",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1882"
+                    },
+                    {
+                        "Volume": "1883",
+                        "Year": "1883",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1883"
+                    },
+                    {
+                        "Volume": "1884",
+                        "Year": "1884",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1884"
+                    },
+                    {
+                        "Volume": "1885",
+                        "Year": "1885",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1885"
+                    },
+                    {
+                        "Volume": "1886",
+                        "Year": "1886",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1886"
+                    },
+                    {
+                        "Volume": "1887",
+                        "Year": "1887",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1887"
+                    },
+                    {
+                        "Volume": "1888",
+                        "Year": "1888",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1888"
+                    },
+                    {
+                        "Volume": "1889",
+                        "Year": "1889",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1889"
+                    },
+                    {
+                        "Volume": "1890",
+                        "Year": "1890",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1890"
+                    },
+                    {
+                        "Volume": "1891",
+                        "Year": "1891",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1891"
+                    },
+                    {
+                        "Volume": "1892",
+                        "Year": "1892",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1892"
+                    },
+                    {
+                        "Volume": "1893",
+                        "Year": "1893",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1893"
+                    },
+                    {
+                        "Volume": "1894",
+                        "Year": "1894",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1894"
+                    },
+                    {
+                        "Volume": "1895",
+                        "Year": "1895",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1895"
+                    },
+                    {
+                        "Volume": "1896",
+                        "Year": "1896",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1896"
+                    },
+                    {
+                        "Volume": "1897",
+                        "Year": "1897",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1897"
+                    },
+                    {
+                        "Volume": "1898",
+                        "Year": "1898",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1898"
+                    },
+                    {
+                        "Volume": "1899",
+                        "Year": "1899",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1899"
+                    },
+                    {
+                        "Volume": "1900",
+                        "Year": "1900",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1900"
+                    },
+                    {
+                        "Volume": "1901",
+                        "Year": "1901",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1901"
+                    },
+                    {
+                        "Volume": "1902",
+                        "Year": "1902",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1902"
+                    },
+                    {
+                        "Volume": "1903",
+                        "Year": "1903",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1903"
+                    },
+                    {
+                        "Volume": "1904",
+                        "Year": "1904",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1904"
+                    },
+                    {
+                        "Volume": "1905",
+                        "Year": "1905",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1905"
+                    },
+                    {
+                        "Volume": "1906",
+                        "Year": "1906",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1906"
+                    },
+                    {
+                        "Volume": "1907",
+                        "Year": "1907",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1907"
+                    },
+                    {
+                        "Volume": "1908",
+                        "Year": "1908",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1908"
+                    },
+                    {
+                        "Volume": "1909",
+                        "Year": "1909",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1909"
+                    },
+                    {
+                        "Volume": "1910",
+                        "Year": "1910",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1910"
+                    },
+                    {
+                        "Volume": "1911",
+                        "Year": "1911",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1911"
+                    },
+                    {
+                        "Volume": "1912",
+                        "Year": "1912",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1912"
+                    },
+                    {
+                        "Volume": "1913",
+                        "Year": "1913",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1913"
+                    },
+                    {
+                        "Volume": "1914",
+                        "Year": "1914",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1914"
+                    },
+                    {
+                        "Volume": "1915",
+                        "Year": "1915",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1915"
+                    },
+                    {
+                        "Volume": "1916",
+                        "Year": "1916",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1916"
+                    },
+                    {
+                        "Volume": "1917",
+                        "Year": "1917",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1917"
+                    },
+                    {
+                        "Volume": "1918",
+                        "Year": "1918",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1918"
+                    }
+                ]
+            }
+        }
+    }
+}
+

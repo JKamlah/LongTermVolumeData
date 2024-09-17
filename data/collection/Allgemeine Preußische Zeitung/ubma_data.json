@@ -1,0 +1,47 @@
+{
+    "Provider": {
+        "UB Mannheim": {
+            "Bibliographic Info": {
+                "Title": "Allgemeine Preußische Zeitung",
+                "Collection(s)": "Reichsanzeiger / Staatsanzeiger",
+                "Language": "Deutsch",
+                "OAI-Identifier": "historische Zeitungen"
+            },
+            "List of Volumes": {
+                "Overview": [
+                    {
+                        "Volume": "1843",
+                        "Year": "1843",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1843"
+                    },
+                    {
+                        "Volume": "1844",
+                        "Year": "1844",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1844"
+                    },
+                    {
+                        "Volume": "1845",
+                        "Year": "1845",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1845"
+                    },
+                    {
+                        "Volume": "1846",
+                        "Year": "1846",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1846"
+                    },
+                    {
+                        "Volume": "1847",
+                        "Year": "1847",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1847"
+                    },
+                    {
+                        "Volume": "1848",
+                        "Year": "1848",
+                        "URL": "https://digi.bib.uni-mannheim.de/periodika/reichsanzeiger/ausgaben/1848"
+                    }
+                ]
+            }
+        }
+    }
+}
+
