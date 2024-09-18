@@ -40,7 +40,7 @@ jobs:
         git pull origin main
         git checkout -B html
         git merge --strategy=ours main
-        git add ./data/  # Assuming the transformed files are in the `data` folder
+        git add -f ./data/**/*.html  # Force-add all HTML files, overriding .gitignore
         git commit -m "Add transformed HTML files"
         git push origin html --force
 
