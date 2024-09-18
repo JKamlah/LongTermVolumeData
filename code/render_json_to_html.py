@@ -5,6 +5,9 @@ import sys
 
 from bs4 import BeautifulSoup
 
+translate_provider_names = {'UB Mannheim': 'University Library Mannheim',
+                            'Staatsbibliothek zu Berlin': 'Stabi Berlin'}
+
 
 def load_and_accumulate_json_files(folder):
     accumulated_data = {"Provider": {}}
@@ -52,11 +55,11 @@ def load_and_accumulate_json_files(folder):
 
 def render_provider(provider_name, provider_data, provider_id):
     # Create an accordion for each provider
-    html_content = '<h4><span class ="title">Digital Volumes</span></h4>'
+    html_content = '<h4><span class ="title">Access to Digital Resources</span></h4>'
     html_content += f'<div class="accordion-item">'
     html_content += f'<h2 class="accordion-header" id="heading-{provider_id}">'
     html_content += f'<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{provider_id}" aria-expanded="true" aria-controls="collapse-{provider_id}">'
-    html_content += f'{provider_name}'
+    html_content += f'Access provider: {translate_provider_names.get(provider_name, provider_name)}'
     html_content += '</button></h2>'
 
     html_content += f'<div id="collapse-{provider_id}" class="accordion-collapse collapse show" aria-labelledby="heading-{provider_id}" data-bs-parent="#heading-{provider_id}">'
@@ -107,7 +110,7 @@ def render_list_of_volumes(provider_data, parent_id):
         html_content += '<h2 class="accordion-header">'
         for title in provider_data["List of Volumes"].keys():
             html_content += f'<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-volumes-{parent_id}" aria-expanded="false" aria-controls="collapse-volumes">'
-            html_content += f'List of Volumes - {title}'
+            html_content += f'Available Resources - {title}'
             html_content += '</button></h2>'
             html_content += f'<div id="collapse-volumes-{parent_id}" class="accordion-collapse collapse">'
             html_content += '<div class="accordion-body"><ul>'
