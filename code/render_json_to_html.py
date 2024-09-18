@@ -55,7 +55,7 @@ def render_provider(provider_name, provider_data, provider_id):
     html_content = '<h4><span class ="title">Digital Volumes</span></h4>'
     html_content += f'<div class="accordion-item">'
     html_content += f'<h2 class="accordion-header" id="heading-{provider_id}">'
-    html_content += f'<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{provider_id}" aria-expanded="true" aria-controls="collapse-{provider_id}">'
+    html_content += f'<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{provider_id}" aria-expanded="true" aria-controls="collapse-{provider_id}">'
     html_content += f'{provider_name}'
     html_content += '</button></h2>'
 
