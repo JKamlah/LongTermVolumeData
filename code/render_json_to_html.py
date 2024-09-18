@@ -59,7 +59,7 @@ def render_provider(provider_name, provider_data, provider_id):
     html_content += f'<div class="accordion-item">'
     html_content += f'<h2 class="accordion-header" id="heading-{provider_id}">'
     html_content += f'<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{provider_id}" aria-expanded="true" aria-controls="collapse-{provider_id}">'
-    html_content += f'Access provider: {translate_provider_names.get(provider_name, provider_name)}'
+    html_content += f'Access Provider: {translate_provider_names.get(provider_name, provider_name)}'
     html_content += '</button></h2>'
 
     html_content += f'<div id="collapse-{provider_id}" class="accordion-collapse collapse show" aria-labelledby="heading-{provider_id}" data-bs-parent="#heading-{provider_id}">'
