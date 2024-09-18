@@ -59,7 +59,7 @@ def render_provider(provider_name, provider_data, provider_id):
     html_content += f'{provider_name}'
     html_content += '</button></h2>'
 
-    html_content += f'<div id="collapse-{provider_id}" class="accordion-collapse collapse" aria-labelledby="heading-{provider_id}" data-bs-parent="#heading-{provider_id}">'
+    html_content += f'<div id="collapse-{provider_id}" class="accordion-collapse collapse show" aria-labelledby="heading-{provider_id}" data-bs-parent="#heading-{provider_id}">'
     html_content += '<div class="accordion-body">'
 
     # Render the first level Bibliographic Info and List of Volumes
