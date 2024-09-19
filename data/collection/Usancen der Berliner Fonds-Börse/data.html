@@ -1,0 +1,437 @@
+<html>
+ <head>
+  <style>
+   /* Variables */
+        :root {
+  /* Color theme variables */
+  --primary: #36864f;
+  --primary-dark: #1c6c35;
+  --primary-light: #e3e3e3;
+
+  /* Accordion variables */
+  --bs-accordion-border-color: var(--primary-light);
+  --bs-accordion-border-width: 1px;
+  --bs-accordion-border-radius: 0.25rem;
+  --bs-accordion-inner-border-radius: calc(0.25rem - 1px);
+  --bs-accordion-btn-padding-x: 1.25rem;
+  --bs-accordion-btn-padding-y: 1rem;
+  --bs-accordion-btn-color: #212529; /* Button text color */
+  --bs-accordion-btn-bg: var(--primary-light); /* Button background color */
+  --bs-accordion-btn-icon-color: #212529; /* Icon color */
+  --bs-accordion-btn-active-color: #fff; /* Text color when active */
+  --bs-accordion-btn-active-bg: var(--primary); /* Background when active */
+  --bs-accordion-btn-focus-border-color: var(--primary-dark); /* Focus border color */
+  --bs-accordion-body-padding-x: 1.25rem;
+  --bs-accordion-body-padding-y: 1rem;
+  --bs-accordion-body-color: #212529;
+  --bs-accordion-body-bg: #fff;
+
+  /* Collapse variables */
+  --bs-collapse-transition-duration: 0.35s;
+}
+        
+        /* Accordion Styles */
+        .accordion {
+          --bs-accordion-border-color: var(--bs-accordion-border-color);
+        }
+        
+        .accordion-item {
+          background-color: var(--bs-accordion-body-bg);
+          border: var(--bs-accordion-border-width) solid var(--bs-accordion-border-color);
+          border-radius: var(--bs-accordion-border-radius);
+          margin-bottom: 0.5rem;
+        }
+        
+        .accordion-item:last-of-type {
+          margin-bottom: 0;
+        }
+        
+        .accordion-header {
+          margin-bottom: 0;
+        }
+        
+        .accordion-button {
+          position: relative;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+          color: var(--bs-accordion-btn-color);
+          text-align: left;
+          background-color: var(--bs-accordion-btn-bg);
+          border: 0;
+          border-radius: var(--bs-accordion-inner-border-radius);
+          overflow-anchor: none;
+          transition: background-color 0.15s ease-in-out;
+        }
+        
+        .accordion-button:not(.collapsed) {
+          color: var(--bs-accordion-btn-active-color);
+          background-color: var(--bs-accordion-btn-active-bg);
+          box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+        }
+        
+        .accordion-button:focus {
+          z-index: 3;
+          border-color: var(--bs-accordion-btn-focus-border-color);
+          outline: 0;
+          box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+        
+        .accordion-button::after {
+          flex-shrink: 0;
+          width: 1.25rem;
+          height: 1.25rem;
+          margin-left: auto;
+          content: "";
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23212529' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.5 6a.5.5 0 0 1 .5-.5h12a.5.5 0 0 1 .354.854l-6 6a.5.5 0 0 1-.708 0l-6-6A.5.5 0 0 1 1.5 6z'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-size: 1.25rem;
+          transition: transform 0.2s ease-in-out;
+        }
+        
+        .accordion-button:not(.collapsed)::after {
+          transform: rotate(180deg);
+        }
+        
+        .accordion-button:focus:not(.collapsed) {
+          box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+        }
+        
+        .accordion-collapse {
+          border-top: var(--bs-accordion-border-width) solid var(--bs-accordion-border-color);
+        }
+        
+        .accordion-body {
+          padding: var(--bs-accordion-body-padding-y) var(--bs-accordion-body-padding-x);
+          color: var(--bs-accordion-body-color);
+          background-color: var(--bs-accordion-body-bg);
+        }
+        
+        /* Collapse Styles */
+        .collapse {
+          display: none;
+        }
+        
+        .collapse.show {
+          display: block;
+        }
+        
+        .collapsing {
+          height: 0;
+          overflow: hidden;
+          transition: height var(--bs-collapse-transition-duration) ease;
+        }
+        
+        .collapsing.collapse-horizontal {
+          width: 0;
+          height: auto;
+          transition: width var(--bs-collapse-transition-duration) ease;
+        }
+        
+        .collapse-horizontal {
+          width: 0;
+          height: auto;
+          overflow: hidden;
+        }
+        
+        .collapse.show.collapse-horizontal {
+          width: auto;
+        }
+  </style>
+  <script>
+   window.addEventListener('DOMContentLoaded', function() {
+      // Select the media-render element
+      var mediaRenderDiv = document.querySelector('.media-render.recore');
+      // Select the dl element
+      var dlElement = document.querySelector('dl');
+      // Insert the mediaRenderDiv after the dl element
+      dlElement.parentNode.insertBefore(mediaRenderDiv, dlElement.nextSibling);
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+ </head>
+ <body>
+  <div class="accordion" id="accordionProviders">
+   <h4>
+    <span class="title">
+     Access to Digital Resources
+    </span>
+   </h4>
+   <div class="accordion-item">
+    <h2 class="accordion-header" id="heading-provider-0">
+     <button aria-controls="collapse-provider-0" aria-expanded="true" class="accordion-button" data-bs-target="#collapse-provider-0" data-bs-toggle="collapse" type="button">
+      Access Provider: University Library Mannheim
+     </button>
+    </h2>
+    <div aria-labelledby="heading-provider-0" class="accordion-collapse collapse show" data-bs-parent="#heading-provider-0" id="collapse-provider-0">
+     <div class="accordion-body">
+      <div class="accordion-item">
+       <h2 class="accordion-header">
+        <button aria-controls="collapse-bibliographic" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-bibliographic-provider-0" data-bs-toggle="collapse" type="button">
+         Bibliographic Information
+        </button>
+       </h2>
+       <div class="accordion-collapse collapse" id="collapse-bibliographic-provider-0">
+        <div class="accordion-body">
+         <ul>
+          <li>
+           <strong>
+            DFG-Viewer:
+           </strong>
+           1837583854
+          </li>
+          <li>
+           <strong>
+            Title:
+           </strong>
+           Usancen der Berliner Fonds-Börse
+          </li>
+          <li>
+           <strong>
+            Collection(s):
+           </strong>
+           Hoppenstedt
+          </li>
+          <li>
+           <strong>
+            Language:
+           </strong>
+           Deutsch
+          </li>
+          <li>
+           <strong>
+            Place of Publication:
+           </strong>
+           Berlin
+          </li>
+          <li>
+           <strong>
+            Structure Type:
+           </strong>
+           Zeitschrift
+          </li>
+          <li>
+           <strong>
+            OAI-Identifier:
+           </strong>
+           1837583854
+          </li>
+          <li>
+           <strong>
+            URN:
+           </strong>
+           urn:nbn:de:bsz:180-dighop-1375
+          </li>
+          <li>
+           <strong>
+            PURL:
+           </strong>
+           http://digi.bib.uni-mannheim.de/urn/urn:nbn:de:bsz:180-dighop-1375
+          </li>
+          <li>
+           <strong>
+            METS:
+           </strong>
+           METS
+          </li>
+         </ul>
+        </div>
+       </div>
+      </div>
+      <div class="accordion-item">
+       <h2 class="accordion-header">
+        <button aria-controls="collapse-volumes" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-volumes-provider-0" data-bs-toggle="collapse" type="button">
+         Available Resources - Overview
+        </button>
+       </h2>
+       <div class="accordion-collapse collapse" id="collapse-volumes-provider-0">
+        <div class="accordion-body">
+         <ul>
+          <li>
+           <strong>
+            19.1921 (1921):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4956&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=44d7af2e5f9f8d9dadb9c7d35075548d" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1481" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1481" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            20.1922 (1922):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4975&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=c0bcd02d5dbf95322dbe64980ad40722" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1586" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1586" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            21.1923 (1923):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4948&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=c4b6712543e05263edfa68d4ad7ed2a7" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1413" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1413" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            22.1924 (1924):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4947&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=0ed777548951507c5d6ad61af7a44ab1" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1404" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1404" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            23.1925 (1925):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4944&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=cc6c05442dd81df44edeab2e5b1cb696" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1366" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1366" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            24.1926 (1926):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4945&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=c5d5bdf92814bcf4460fccd73f834912" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1385" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1385" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            25.1927 (1927):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4946&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=e67255c7e026d2895a9b2fe6c09c7725" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1392" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1392" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            26.1928 (1928):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4949&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=75afa20c4492be52ad0a627f5e73d04a" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1429" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1429" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            27.1929 (1929):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4957&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=66a2a88292d9f5e4bfbd44bc3000b77c" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1493" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1493" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            28.1930 (1930):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4950&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=f6304397463a3a283ff9d66126f4c29b" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1432" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1432" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            29.1931 (1931):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4978&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=24c20439923f4dad446aae3d7f97f589" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1614" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1614" target="_blank">
+            View METS
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

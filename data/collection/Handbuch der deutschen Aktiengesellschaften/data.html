@@ -1,0 +1,2853 @@
+<html>
+ <head>
+  <style>
+   /* Variables */
+        :root {
+  /* Color theme variables */
+  --primary: #36864f;
+  --primary-dark: #1c6c35;
+  --primary-light: #e3e3e3;
+
+  /* Accordion variables */
+  --bs-accordion-border-color: var(--primary-light);
+  --bs-accordion-border-width: 1px;
+  --bs-accordion-border-radius: 0.25rem;
+  --bs-accordion-inner-border-radius: calc(0.25rem - 1px);
+  --bs-accordion-btn-padding-x: 1.25rem;
+  --bs-accordion-btn-padding-y: 1rem;
+  --bs-accordion-btn-color: #212529; /* Button text color */
+  --bs-accordion-btn-bg: var(--primary-light); /* Button background color */
+  --bs-accordion-btn-icon-color: #212529; /* Icon color */
+  --bs-accordion-btn-active-color: #fff; /* Text color when active */
+  --bs-accordion-btn-active-bg: var(--primary); /* Background when active */
+  --bs-accordion-btn-focus-border-color: var(--primary-dark); /* Focus border color */
+  --bs-accordion-body-padding-x: 1.25rem;
+  --bs-accordion-body-padding-y: 1rem;
+  --bs-accordion-body-color: #212529;
+  --bs-accordion-body-bg: #fff;
+
+  /* Collapse variables */
+  --bs-collapse-transition-duration: 0.35s;
+}
+        
+        /* Accordion Styles */
+        .accordion {
+          --bs-accordion-border-color: var(--bs-accordion-border-color);
+        }
+        
+        .accordion-item {
+          background-color: var(--bs-accordion-body-bg);
+          border: var(--bs-accordion-border-width) solid var(--bs-accordion-border-color);
+          border-radius: var(--bs-accordion-border-radius);
+          margin-bottom: 0.5rem;
+        }
+        
+        .accordion-item:last-of-type {
+          margin-bottom: 0;
+        }
+        
+        .accordion-header {
+          margin-bottom: 0;
+        }
+        
+        .accordion-button {
+          position: relative;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+          color: var(--bs-accordion-btn-color);
+          text-align: left;
+          background-color: var(--bs-accordion-btn-bg);
+          border: 0;
+          border-radius: var(--bs-accordion-inner-border-radius);
+          overflow-anchor: none;
+          transition: background-color 0.15s ease-in-out;
+        }
+        
+        .accordion-button:not(.collapsed) {
+          color: var(--bs-accordion-btn-active-color);
+          background-color: var(--bs-accordion-btn-active-bg);
+          box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+        }
+        
+        .accordion-button:focus {
+          z-index: 3;
+          border-color: var(--bs-accordion-btn-focus-border-color);
+          outline: 0;
+          box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+        
+        .accordion-button::after {
+          flex-shrink: 0;
+          width: 1.25rem;
+          height: 1.25rem;
+          margin-left: auto;
+          content: "";
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23212529' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.5 6a.5.5 0 0 1 .5-.5h12a.5.5 0 0 1 .354.854l-6 6a.5.5 0 0 1-.708 0l-6-6A.5.5 0 0 1 1.5 6z'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-size: 1.25rem;
+          transition: transform 0.2s ease-in-out;
+        }
+        
+        .accordion-button:not(.collapsed)::after {
+          transform: rotate(180deg);
+        }
+        
+        .accordion-button:focus:not(.collapsed) {
+          box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+        }
+        
+        .accordion-collapse {
+          border-top: var(--bs-accordion-border-width) solid var(--bs-accordion-border-color);
+        }
+        
+        .accordion-body {
+          padding: var(--bs-accordion-body-padding-y) var(--bs-accordion-body-padding-x);
+          color: var(--bs-accordion-body-color);
+          background-color: var(--bs-accordion-body-bg);
+        }
+        
+        /* Collapse Styles */
+        .collapse {
+          display: none;
+        }
+        
+        .collapse.show {
+          display: block;
+        }
+        
+        .collapsing {
+          height: 0;
+          overflow: hidden;
+          transition: height var(--bs-collapse-transition-duration) ease;
+        }
+        
+        .collapsing.collapse-horizontal {
+          width: 0;
+          height: auto;
+          transition: width var(--bs-collapse-transition-duration) ease;
+        }
+        
+        .collapse-horizontal {
+          width: 0;
+          height: auto;
+          overflow: hidden;
+        }
+        
+        .collapse.show.collapse-horizontal {
+          width: auto;
+        }
+  </style>
+  <script>
+   window.addEventListener('DOMContentLoaded', function() {
+      // Select the media-render element
+      var mediaRenderDiv = document.querySelector('.media-render.recore');
+      // Select the dl element
+      var dlElement = document.querySelector('dl');
+      // Insert the mediaRenderDiv after the dl element
+      dlElement.parentNode.insertBefore(mediaRenderDiv, dlElement.nextSibling);
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+ </head>
+ <body>
+  <div class="accordion" id="accordionProviders">
+   <h4>
+    <span class="title">
+     Access to Digital Resources
+    </span>
+   </h4>
+   <div class="accordion-item">
+    <h2 class="accordion-header" id="heading-provider-0">
+     <button aria-controls="collapse-provider-0" aria-expanded="true" class="accordion-button" data-bs-target="#collapse-provider-0" data-bs-toggle="collapse" type="button">
+      Access Provider: University Library Mannheim
+     </button>
+    </h2>
+    <div aria-labelledby="heading-provider-0" class="accordion-collapse collapse show" data-bs-parent="#heading-provider-0" id="collapse-provider-0">
+     <div class="accordion-body">
+      <div class="accordion-item">
+       <h2 class="accordion-header">
+        <button aria-controls="collapse-bibliographic" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-bibliographic-provider-0" data-bs-toggle="collapse" type="button">
+         Bibliographic Information
+        </button>
+       </h2>
+       <div class="accordion-collapse collapse" id="collapse-bibliographic-provider-0">
+        <div class="accordion-body">
+         <ul>
+          <li>
+           <strong>
+            DFG-Viewer:
+           </strong>
+           1006345701
+          </li>
+          <li>
+           <strong>
+            Title:
+           </strong>
+           Handbuch der deutschen Aktiengesellschaften
+          </li>
+          <li>
+           <strong>
+            Collection(s):
+           </strong>
+           Hoppenstedt
+          </li>
+          <li>
+           <strong>
+            Language:
+           </strong>
+           Deutsch
+          </li>
+          <li>
+           <strong>
+            Place of Publication:
+           </strong>
+           Heppenheim (Bergstr.)
+          </li>
+          <li>
+           <strong>
+            Structure Type:
+           </strong>
+           Berlin
+          </li>
+          <li>
+           <strong>
+            OAI-Identifier:
+           </strong>
+           Zeitschrift
+          </li>
+          <li>
+           <strong>
+            URN:
+           </strong>
+           1006345701
+          </li>
+          <li>
+           <strong>
+            PURL:
+           </strong>
+           urn:nbn:de:bsz:180-dighop-181
+          </li>
+          <li>
+           <strong>
+            METS:
+           </strong>
+           http://digi.bib.uni-mannheim.de/urn/urn:nbn:de:bsz:180-dighop-181
+          </li>
+         </ul>
+        </div>
+       </div>
+      </div>
+      <div class="accordion-item">
+       <h2 class="accordion-header">
+        <button aria-controls="collapse-volumes" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-volumes-provider-0" data-bs-toggle="collapse" type="button">
+         Available Resources - Overview
+        </button>
+       </h2>
+       <div class="accordion-collapse collapse" id="collapse-volumes-provider-0">
+        <div class="accordion-body">
+         <ul>
+          <li>
+           <strong>
+            01.1896/1897 (1896/1897):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4877&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=600a4d1180db3a801738f04311f2316a" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-989" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-989" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            02.1897/1898, Band 1 (1897/1898, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4888&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=03f87db5638084f952c77e9021dad150" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1076" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1076" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            02.1897/1898, Band 2 (1897/1898, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4886&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=04442a6cbb721f795118bda225477788" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1051" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1051" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            03.1898/1899, Band 1 (1898/1899, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4882&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=f8a2b358fc5dbf1a56b7adc59e394231" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1031" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1031" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            03.1898/1899, Band 2 (1898/1899, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4880&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=d248f274dc27d1c50ce8d36ac69a7682" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1011" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1011" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            04.1899/1900, Band 1 (1899/1900, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4913&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=78f355cfd2ce68a043e41f4348881efd" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1317" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1317" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            04.1899/1900, Band 2 (1899/1900, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4911&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=1cab6bf94a8290716e5a059d7a15b0bc" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1291" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1291" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            05.1900/1901, Band 1 (1900/1901, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4912&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=908b307466fd4a697dace18e8ce47608" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1303" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1303" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            05.1900/1901, Band 2 (1900/1901, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4908&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=10ff50c1ad1802d78a3e6f971bddb361" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1269" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1269" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            06.1901/1902, Band 1 (1901/1902, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4907&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=f8686c23826b750596336f83dfacc785" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1258" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1258" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            06.1901/1902, Band 2 (1901/1902, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4904&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=c2bd6a6670ef07725b9c9ee20d94ae15" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1225" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1225" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            07.1902/1903, Band 1 (1902/1903, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4902&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=a4f0cb5869d7bf6fc0d364305ee48207" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1202" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1202" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            07.1902/1903, Band 2 (1902/1903, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4901&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=4f7b3250b4fe2697f4190147e3931c49" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1190" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1190" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            08.1903/1904, Band 1 (1903/1904, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4900&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=9111d4b839fceb6039b17330634b85f2" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1184" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1184" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            08.1903/1904, Band 2 (1903/1904, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5040&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=addcd1dc0f1d1de8b21cd029f4d602da" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1947" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1947" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            09.1904/1905, Band 1 (1904/1905, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4892&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=2fc555fbdb7af2ec0242a6f480b3d6c0" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1101" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1101" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            09.1904/1905, Band 2 (1904/1905, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bdouble%5D=0&amp;tx_dlf%5Bid%5D=4890&amp;tx_dlf%5Bpage%5D=1&amp;cHash=5d1c5e65f4083e13ab29489f3111aa44" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1099" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1099" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            10.1905/1906, Band 1 (1905/1906, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4861&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=8e22f005edddef9ac3b20107a6d4c02e" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_190600101" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_190600101" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            10.1905/1906, Band 2 (1905/1906, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4872&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=f26b8c908254a70252bcf640e4801e48" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_190600102" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_190600102" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            11.1906/1907, Band 1 (1906/1907, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4870&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=adb52bde758c114f59521fe818baf9ea" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_190700111" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_190700111" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            11.1906/1907, Band 2 (1906/1907, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4708&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=148386507ba3f8d1e3e31678a86e12df" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_190700112" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_190700112" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            12.1907/1908, Band 1 (1907/1908, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4859&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=0071ff22855693d0d1a01552724592b7" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_190800121" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_190800121" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            12.1907/1908, Band 2 (1907/1908, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4710&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=d30cf734fb5f58eb4bab28b8c9177a89" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_190800122" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_190800122" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            13.1908/1909, Band 1 (1908/1909, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4857&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=f2094479335d63feb952e01e06b59444" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_190900131" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_190900131" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            13.1908/1909, Band 2 (1908/1909, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4847&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=0f7b7c3b4320bac2527a209194114b08" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_190900132" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_190900132" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            14.1909/1910, Band 1 (1909/1910, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4838&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=4d3660e53c496929f36250092092c3fb" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/Band" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/Band" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            14.1909/1910, Band 2 (1909/1910, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4705&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=8591c3538621bb95bdc3d569bf5eb47d" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/Band" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/Band" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            15.1910/1911, Band 1 (1910/1911, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4703&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=8629bc170dfb6b75a11f79a24c583c39" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-693" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-693" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            15.1910/1911, Band 2 (1910/1911, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4753&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=d4f960a241f427bca862830de93371e2" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-808" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-808" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            16.1911/1912, Band 1 (1911/1912, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4697&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=a0de7225998cb176c149c2e4823da52e" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-689" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-689" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            16.1911/1912, Band 2 (1911/1912, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4693&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=17c7517e7a7305adbbc6e8abe5aa1404" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-653" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-653" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            17.1912/1913, Band 1 (1912/1913, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4691&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=12e60aa6634000755759f3a50082e573" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-630" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-630" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            17.1912/1913, Band 2 (1912/1913, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4689&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=d9716b2b71373213107841b430c04258" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-626" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-626" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            18.1913/1914, Band 1 (1913/1914, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4679&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=3e72809b689ff98c0bbb6d9dcfe9eb38" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-574" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-574" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            18.1913/1914, Band 2 (1913/1914, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4676&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=ee2cfeb0fc9a4fbf825121d356d69016" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-544" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-544" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            19.1914/1915, Band 1 (1914/1915, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4668&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=90cf1d5064a44414120ff6dadb23b7c6" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-508" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-508" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            19.1914/1915, Band 2 (1914/1915, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bdouble%5D=0&amp;tx_dlf%5Bid%5D=4675&amp;tx_dlf%5Bpage%5D=1&amp;cHash=dd7ba8fb96ac4d17af39e4bbaf60a120" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-537" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-537" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            20.1915/1916, Band 1 (1915/1916, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4672&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=6a56f6a04c063e4c5d6437ba96a20fa9" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-520" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-520" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            20.1915/1916, Band 2 (1915/1916, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4665&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=ca4a0c2993a7297562957168bda0cd04" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-478" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-478" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            21.1916/1917, Band 1 (1916/1917, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4663&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=df99d6cc4e0cdfa2f1eadd608c5ffd9d" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_191700211" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_191700211" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            21.1916/1917, Band 2 (1916/1917, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4661&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=8f3a4572b716a117f52ab822c59ab97c" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_191700212" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_191700212" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            22.1917/1918, Band 1 (1917/1918, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bdouble%5D=0&amp;tx_dlf%5Bid%5D=4744&amp;tx_dlf%5Bpage%5D=1&amp;cHash=4ed6ea861b8b16b3f789e574513af6d7" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_191800221" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_191800221" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            22.1917/1918, Band 2 (1917/1918, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4650&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=88316440b9997de7a7f69fc5d65c53e0" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_191800222" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_191800222" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            23.1918/1919, Band 1 (1918/1919, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4593&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=9217e5b36892f5e2daf4c4bc8b619703" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-360" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-360" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            23.1918/1919, Band 2 (1918/1919, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4595&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=caf19490a70880d0a4eaac995c0a1b01" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-382" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-382" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            24.1919/1920, Band 1 (1919/1920, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4579&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=ac5281d89e1352dd3f874e21817a3b5f" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_192000241" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_192000241" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            24.1919/1920, Band 2 (1919/1920, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bdouble%5D=0&amp;tx_dlf%5Bid%5D=4591&amp;tx_dlf%5Bpage%5D=1&amp;cHash=01bd195701175826a3e88f683ef9823f" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_192000242" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_192000242" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            25.1920/1921, Band 1 (1920/1921, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4961&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=1a6e9e8a03505c6924b95c023dfa2d29" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1518" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1518" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            25.1920/1921, Band 2 (1920/1921, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4973&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=acc306662a4188f796a9cc629f2d71c3" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1561" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1561" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            26.1921/1922, Band 1 (1921/1922, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4955&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=38f32a52afe315349faee0e5652103ae" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1472" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1472" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            26.1921/1922, Band 2 (1921/1922, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4954&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=47a9e5a0de60c9da455252fba2147289" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1463" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1463" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            27.1922/1923, Band 1 (1922/1923, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4776&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=a54ae85b2c701497ca94c7163e8282a7" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-820" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-820" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            27.1922/1923, Band 2 (1922/1923, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4878&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=a6532b3b0dd83f6c7e61fe581dd999c7" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_192300272" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_192300272" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            28.1923/1924, Band 1a (1923/1924, Band 1a):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4918&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=a6f8c10cda6287799caec01ae4bc96d5" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_1924002811" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_1924002811" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            28.1923/1924, Band 1b (1923/1924, Band 1b):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bdouble%5D=0&amp;tx_dlf%5Bid%5D=4940&amp;tx_dlf%5Bpage%5D=1&amp;cHash=de40a697f016a40fa6b54fe703c1927e" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_1924002812" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_1924002812" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            28.1923/1924, Band 2a (1923/1924, Band 2a):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4917&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=58da7f917c46894048c2a1f84e0cd2ca" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_1924002821" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_1924002821" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            28.1923/1924, Band 2b (1923/1924, Band 2b):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5053&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=19a075c12040c34ab9e7ee7ed1003055" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-219" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-219" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            29.1924/1925, Band 1a (1924/1925, Band 1a):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4994&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=1c76b5d2287bfadf6e81ba133466ce83" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1623" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1623" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            29.1924/1925, Band 1b (1924/1925, Band 1b):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5006&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=3465a9b65dbc9a192d0384cef78adb43" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1638" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1638" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            30.1925, Band 1 (1925, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5008&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=04503af3300fbe03fe74a5b3ec855c63" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1646" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1646" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            30.1925, Band 2 (1925, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5009&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=25f1a9b7203edd4618639f101be2a680" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1652" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1652" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            30.1925, Band 3 (1925, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5010&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=ccbef1db9eeab055d693910d388001b2" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1668" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1668" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            30.1925, Band 4 (1925, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5011&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=01ec555c8aeb0b684d32ce08fbf89e1f" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1675" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1675" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            31.1926, Band 1 (1926, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5013&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=1fb7401e82736409cdeed4481e5e1ecf" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1682" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1682" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            31.1926, Band 2 (1926, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5014&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=8ffc5fce76bf54ce8f367280a33d3c67" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1695" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1695" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            31.1926, Band 3 (1926, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5015&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=ae6b4a7cc8584a7b0c37861bf20c9abe" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1707" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1707" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            31.1926, Band 4 (1926, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5016&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=800b466627e3c5f03b8cce084bd1a4a1" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1719" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1719" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            32.1927, Band 1 (1927, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5018&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=f53c16c99be9bbe24dcbef9d471e264e" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1720" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1720" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            32.1927, Band 2 (1927, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5019&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=c8384964598dbaa9ceb10b3b532e2d0b" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1730" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1730" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            32.1927, Band 3 (1927, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5020&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=9dd48b5aadd23e2ad9c2f32fd6d8d632" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1747" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1747" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            32.1927, Band 4 (1927, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5021&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=0077e924e0ea4aee6500480c6e1dd5fa" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1751" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1751" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            33.1928, Band 1 (1928, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5022&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=9dec5f69603fd10c8762ee71cbe88acb" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1765" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1765" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            33.1928, Band 2 (1928, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5023&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=f1854f3dde9a67aaf6526ad5d350a8ac" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1771" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1771" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            33.1928, Band 3 (1928, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5024&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=1c14c430568130e92f415c0027d0f922" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1788" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1788" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            33.1928, Band 4 (1928, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5025&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=7507b5debffc745b1fc3982e31d4aa37" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1796" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1796" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            34.1929, Band 1 (1929, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5026&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=4f00ee4aa45e05fd54c68d62762e5602" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1808" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1808" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            34.1929, Band 2 (1929, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5027&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=9476229efaa08506ba5a0973a7081cb9" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1815" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1815" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            34.1929, Band 3 (1929, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5028&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=772f3be49450185e4dcdf84e89af6baa" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1827" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1827" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            34.1929, Band 4 (1929, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bdouble%5D=0&amp;tx_dlf%5Bid%5D=5029&amp;tx_dlf%5Bpage%5D=1&amp;cHash=642715709bf2ed838d8a179bf4e35d48" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1833" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1833" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            35.1930, Band 1 (1930, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4585&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=520fdb8e6bf39821722df29e8b65befe" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_193000351" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_193000351" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            35.1930, Band 2 (1930, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5030&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=396aeb7c5f5397b0f087278ab74b2001" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1847" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1847" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            35.1930, Band 3 (1930, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5031&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=95f6fd13af7f687914c2d1bb592bb430" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1859" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1859" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            35.1930, Band 4 (1930, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5032&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=9b4881ac995df6302c23608af9adb15a" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1862" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1862" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            36.1931, Band 1 (1931, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5033&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=37ca671b6e97ce51be66d997df99cfbc" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1877" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1877" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            36.1931, Band 2 (1931, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5034&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=068598b9dedb409e84fd44783bc83e2a" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1883" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1883" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            36.1931, Band 3 (1931, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5035&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=82627047804b75ca951ddb0220c63f1c" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1897" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1897" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            36.1931, Band 4 (1931, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4580&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=13f92aa4c341d1d05cd9570360cc2ae6" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/1006345701_193100364" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/1006345701_193100364" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            37.1932, Band 1 (1932, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bdouble%5D=0&amp;tx_dlf%5Bid%5D=5036&amp;tx_dlf%5Bpage%5D=1&amp;cHash=7d59cb95483272b956b26b121db49fc5" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1906" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1906" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            37.1932, Band 2 (1932, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5037&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=197a9ada5f9a7e47c91278d1c4dfc7ad" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1914" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1914" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            37.1932, Band 3 (1932, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5038&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=8cb3878362b52055c701c444d7bf969b" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1920" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1920" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            37.1932, Band 4 (1932, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5039&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=f1a9cafd6292fb05176c5f93cfc3f6da" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1933" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1933" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            38.1933, Band 1 (1933, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4581&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=d3f78efc4e68603b0e31df71d0f52f9f" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-308" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-308" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            38.1933, Band 2 (1933, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bdouble%5D=0&amp;tx_dlf%5Bid%5D=4684&amp;tx_dlf%5Bpage%5D=1&amp;cHash=78948331a8ae616fc7f57ba2a93229a5" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-584" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-584" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            38.1933, Band 3 (1933, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4687&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=8aba9d86186ae9377b321de6db3069d4" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-608" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-608" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            38.1933, Band 4 (1933, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bdouble%5D=0&amp;tx_dlf%5Bid%5D=4688&amp;tx_dlf%5Bpage%5D=1&amp;cHash=21ae9cf7e1b1e360e9dd900136f00bb8" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-619" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-619" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            39.1934, Band 1 (1934, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5041&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=6a33710bd7b860fd28c8755072a0cc66" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1956" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1956" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            39.1934, Band 2 (1934, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5042&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=f19a280200a520c7a83b88607b82bd04" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1964" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1964" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            39.1934, Band 3 (1934, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5043&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=5f7d6067ac2163a5f6905da8e283b67c" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1973" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1973" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            39.1934, Band 4 (1934, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5044&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=4fed8ca73b738245f6c74108f35857e1" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1982" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1982" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            40.1935, Band 1 (1935, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5045&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=975dfe7629a14e19eb5c7aa233c333ca" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1999" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1999" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            40.1935, Band 2 (1935, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5046&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=c9146afb91905a2daa4f228a6cf2ec7c" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2000" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2000" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            40.1935, Band 3 (1935, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5047&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=6a7e59cc8c2fe8fb716afed124d07b52" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2016" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2016" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            40.1935, Band 4 (1935, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5048&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=a693f1f6c8cc267f7292d9b5fa4b0716" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2028" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2028" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            40.1935, Band 5 (1935, Band 5):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5049&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=d2db53a8f1758fd39168e75189a63072" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2034" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2034" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            40.1935, Band 6 (1935, Band 6):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5050&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=d15ad5f77dfba478b52fa67d32261de6" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2045" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2045" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            41.1936, Band 1 (1936, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5052&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=be352e4e58d8d0658f29ab2f74fc6966" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2061" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2061" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            41.1936, Band 2 (1936, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5051&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=23c46153e1bae770596a4db0affe956a" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2050" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2050" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            41.1936, Band 3 (1936, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5054&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=0df98738ddc35f2769f713d5c5e675a3" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2073" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2073" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            41.1936, Band 4 (1936, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4894&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=d758a09f6ba2fe2932939cc952d393f6" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1128" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1128" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            41.1936, Band 5 (1936, Band 5):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4883&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=5463eaa37954da648a17050ed47c7013" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1045" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1045" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            41.1936, Band 6 (1936, Band 6):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5055&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=48a2482b2414381ff8eb3604b76d0c30" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2084" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2084" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            42.1937, Band 1 (1937, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5056&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=973ebec0eb3c38747a566e4e16544d88" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2099" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2099" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            42.1937, Band 2 (1937, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5057&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=c612661622fa22815a67ff3e5bc4635e" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2101" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2101" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            42.1937, Band 3 (1937, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5058&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=6bc9c212a4b33383687b737d8757489e" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2111" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2111" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            42.1937, Band 4 (1937, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5059&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=cc91153982f9bd0e9f51fcf820c4d104" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2125" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2125" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            42.1937, Band 5 (1937, Band 5):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5060&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=ef5932b5a267beccdeae76bccddd05d3" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2136" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2136" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            42.1937, Band 6 (1937, Band 6):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5061&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=9b06c21fc8a7f75f1cea1e232e66311d" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2145" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2145" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            43.1938, Band 1 (1938, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5062&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=026648e45a34572fb68c59e4ffc551c0" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2158" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2158" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            43.1938, Band 2 (1938, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5063&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=de8a16c0cc07846b6de6e83abc868fa9" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2169" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2169" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            43.1938, Band 3 (1938, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5064&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=8cf337114b1af2fb4ff16e6308c7ed45" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2179" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2179" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            43.1938, Band 4 (1938, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5065&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=6f38ae2663a674d547aefb3975fbf366" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2189" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2189" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            43.1938, Band 5 (1938, Band 5):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5066&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=f2984f319e8ee07035fea77e3fc0d54d" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2190" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2190" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            43.1938, Band 6 (1938, Band 6):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5067&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=03dc51c597b91d6ca9099b7a6c42350c" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2202" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2202" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            44.1939, Band 1 (1939, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4966&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=39842dec6297e231016131ed1592a92e" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1526" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1526" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            44.1939, Band 2 (1939, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4971&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=ad557260010ae459571b31df08750532" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1546" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1546" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            44.1939, Band 3 (1939, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4972&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=2dd37b2c8a8a3e0cb6a421c8c7d90925" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1554" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1554" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            44.1939, Band 4 (1939, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4974&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=8cd0804c377a1b1f28235c2886a21d05" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1578" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1578" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            44.1939, Band 5 (1939, Band 5):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4976&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=ae00f0b41a4369e16a7c745d258aea11" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1594" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1594" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            44.1939, Band 6 (1939, Band 6):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4977&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=0dae1947029458cdce6bb7c7845c7571" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1606" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-1606" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            45.1940, Band 1 (1940, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5071&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=c9d8c574c2ae3fb145c04666c8120230" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2217" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2217" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            45.1940, Band 2 (1940, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5072&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=7ce1ddd32492215eea7cd15aa95ec49d" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2222" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2222" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            45.1940, Band 3 (1940, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5073&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=6c1e9badb9fc945eba38e810c0d7a100" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2239" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2239" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            45.1940, Band 4 (1940, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5074&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=2274b7a179ce306ccd3fc8e4375cf64f" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2246" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2246" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            45.1940, Band 5 (1940, Band 5):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5075&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=8305738f9a49b4e45e7059c42bee20e6" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2257" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2257" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            45.1940, Band 6 (1940, Band 6):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5076&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=34ab69045ded9912b9efc592e2f659fa" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2266" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2266" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            46.1941, Band 1 (1941, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5077&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=4baedb1e0e6b6b5d24d9b326ff0ad541" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2275" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2275" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            46.1941, Band 2 (1941, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5080&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=1d4f7656850b9583f3141dadb71a9208" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2285" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2285" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            46.1941, Band 3 (1941, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5081&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=4a14ee82e4bb65c60646ee6837de3130" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2291" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2291" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            46.1941, Band 4 (1941, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5082&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=b507aca7064255fda0a3153c053d149c" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2303" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2303" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            46.1941, Band 5 (1941, Band 5):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5083&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=ad30a8c294768279ccd7704ca6efd6b2" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2312" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2312" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            46.1941, Band 6 (1941, Band 6):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5084&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=a2050385c87b28cc8f13f80a29c93a58" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2329" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2329" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            46.1941, Band 7 (1941, Band 7):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5085&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=d349eff76b2fb536096f64243d7d10ba" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2332" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2332" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            47.1942, Band 1 (1942, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5087&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=9e5f63d077ac027fa0cef81f09014d44" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2346" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2346" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            47.1942, Band 2 (1942, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5088&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=dc621756571be8cb8488435483d17648" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2355" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2355" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            47.1942, Band 3 (1942, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5091&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=6cfc1af722d54898fa8d42844b67ce77" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2363" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2363" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            47.1942, Band 4 (1942, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5092&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=bbace1855e8f550ffd498f874c78c572" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2372" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2372" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            47.1942, Band 5 (1942, Band 5):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5093&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=e3d08e61baa5a146bc62c83cd046afdd" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2381" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2381" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            47.1942, Band 6 (1942, Band 6):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5094&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=11905e0dba13df8e2d11b36f577a4ec7" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2392" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2392" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            48.1943, Band 1 (1943, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5095&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=c3baa9f79a626b1df3001ba9be63ad77" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2404" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2404" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            48.1943, Band 2 (1943, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5096&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=07bc2093ce49773f0ed9b4413b1ac79b" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2418" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2418" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            48.1943, Band 3 (1943, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5097&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=98bc748b942826836f86255df8c74017" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2426" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2426" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            48.1943, Band 4 (1943, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5099&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=d7cb751169b2017bd761ab3dd01068f2" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2435" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2435" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            48.1943, Band 5 (1943, Band 5):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5100&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=49c6f7e5de51fc4495c5937b45d114d3" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2446" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2446" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            49.1944, Band 1 (1944, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5102&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=49d59deca8b036db95d9bf1e2a5f3cc6" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2454" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2454" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            49.1944, Band 2 (1944, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5103&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=26ea02bd3274993a8c5b44b55ca2911e" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2460" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2460" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            49.1944, Band 3 (1944, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5104&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=043a7eb84c474c1803cbd5f228b68fd0" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2478" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2478" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            49.1944, Band 4 (1944, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5105&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=62c9f6cd81deaeaeb26d6fa29e86b7a3" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2486" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2486" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            49.1944, Band 7 (1944, Band 7):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=5106&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=9f872f0ea73e92fe8540a574c40b51e9" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2493" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-2493" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            50.1949, Band 1 (1949, Band 1):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4070&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=382ffb6928a8b68012016e4b584c6702" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-193" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-193" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            50.1949, Band 2 (1949, Band 2):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4071&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=d8b97322cdd80f6855081419fec6eb99" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-208" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-208" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            50.1949, Band 3 (1949, Band 3):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bid%5D=4074&amp;tx_dlf%5Bpage%5D=1&amp;tx_dlf%5Bdouble%5D=0&amp;cHash=fa8ac76c586a3d76f17ca7ee5fc0212e" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-220" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-220" target="_blank">
+            View METS
+           </a>
+          </li>
+          <li>
+           <strong>
+            50.1949/50, Band 4 (1949/50, Band 4):
+           </strong>
+           <a href="https://digi.bib.uni-mannheim.de/hoppenstedt/uebersicht/hs-seitenansicht-uebersicht/?tx_dlf%5Bdouble%5D=0&amp;tx_dlf%5Bid%5D=4126&amp;tx_dlf%5Bpage%5D=1&amp;cHash=a96ea1ee3b8ca49316935797d5bacd72" target="_blank">
+            View Source
+           </a>
+           |
+           <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D=https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-275" target="_blank">
+            Open with OCR-Viewer
+           </a>
+           |
+           <a href="https://digi.bib.uni-mannheim.de/mets/urn:nbn:de:bsz:180-dighop-275" target="_blank">
+            View METS
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
