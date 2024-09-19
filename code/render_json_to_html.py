@@ -120,12 +120,12 @@ def render_list_of_volumes(provider_data, parent_id):
                 url = volume.get("URL", None)
                 html_content += f'<li><strong>{volume_number} ({year}):</strong>'
                 if url:
-                    html_content += f' <a href="{url}">View Source</a>'
+                    html_content += f' <a href="{url}" target="_blank">View Source</a>'
                 if "METS" in volume.keys():
                     mets_id = volume["METS"]
                     html_content += (
-                        f' | <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D={mets_id}">Open with OCR-Viewer</a>'
-                        f' | <a href="{mets_id}">View METS</a>'
+                        f' | <a href="https://ocr.berd-nfdi.de/viewer?tx_dlf%5Bid%5D={mets_id}" target="_blank">Open with OCR-Viewer</a>'
+                        f' | <a href="{mets_id}" target="_blank">View METS</a>'
                     )
                 html_content += '</li>'
             html_content += '</ul></div></div></div>'
